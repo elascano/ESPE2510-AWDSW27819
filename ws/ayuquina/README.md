@@ -3,3 +3,4 @@
 ## ESPE 202551 Oct 2025 - March 2026
 ## Workshops 
 ### Instructor: Edison Lascano
+#### Name: Danny Ayuquina
