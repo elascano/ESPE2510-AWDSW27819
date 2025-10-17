@@ -1,0 +1,97 @@
+.profile{
+    color: #00FF00;
+}
+
+.main-content{
+    align-self: auto;
+    width: auto;
+}
+
+.quote {
+    font-style: italic;
+    color: #333;
+    border-left: 4px solid #0077cc;
+    padding-left: 10px;
+    margin: 20px 0;
+    animation: fadeIn 5s ease;
+}
+
+@keyframes fadeIn {
+    from{opacity:0; transform:translationY(10px);}
+    to {opacity:1; transform:translationY(0);}
+}
+.barr{
+    background-color: #0000ff;
+    padding: 1 rem 0 rem;
+    display: flex;
+    color: #ff0000;
+    overflow: hidden;
+    justify-content: center;
+
+}
+
+.barr ul li{
+    float: left;
+}
+
+a{
+  color: #ff0000;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.about-me{
+    padding: 25px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #00f0ff;
+    color: #333;
+    box-shadow: 0 4px 8px #000000d9;
+}
+
+.section-tittle{
+    font-weight: bold;
+    font-size: 25px;
+    text-transform: uppercase;
+    margin: 30px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.footer{
+    background-color: #0000ff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;  
+}
+
+.section-content{
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    margin: 45px;
+}
+
+.page{
+    font-size: 20px;
+    color: #ff0000;
+    margin: 25px;
+    font-weight: bold;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px;
+    text-transform: uppercase;
+}
+
+a:hover{
+    background-color: #00ffee;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
