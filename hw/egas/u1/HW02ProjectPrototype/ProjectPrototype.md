@@ -1,3 +1,3 @@
-T3 Project Protorype
+T4 Project Protorype
 
-• DishDash Prototype Link: https://martincordero7.github.io/Star-Minimarket/
+• Prototype Link: https://martincordero7.github.io/Star-Minimarket/
