@@ -1,0 +1,19 @@
+{
+  "name": "rest-countries-api",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "API empaquetada (Express + ESM) que expone funcionalidades claves de REST Countries.",
+  "main": "src/index.mjs",
+  "scripts": {
+    "dev": "node src/index.mjs",
+    "start": "node src/index.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2"
+  }
+}
