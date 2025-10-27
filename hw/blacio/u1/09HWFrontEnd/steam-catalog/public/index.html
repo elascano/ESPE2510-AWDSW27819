@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Catálogo Steam</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <div class="brand">
+        <h1 class="title">Catálogo de Juegos Steam</h1>
+        <p class="subtitle">Busca por nombre y abre la ficha en la tienda</p>
+      </div>
+
+      <div class="actions">
+        <button id="toggleJsonBtn" class="btn btn--ghost">Ver JSON</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="toolbar">
+        <div class="search-bar">
+          <input id="q" type="text" placeholder="Buscar por nombre..." aria-label="Buscar juegos"/>
+          <button id="btn" class="btn">Buscar</button>
+        </div>
+
+      <div id="indexer" class="indexer" hidden>
+        <div class="indexer__row">
+          <span id="indexerLabel" class="indexer__label">Indexando catálogo…</span>
+          <span id="indexerValue" class="indexer__value">0%</span>
+        </div>
+        <div class="indexer__bar">
+          <div id="indexerFill" class="indexer__fill" style="width:0%"></div>
+        </div>
+        <div class="indexer__meta">
+          <span id="indexerCount">0</span> / <span id="indexerTarget">100000</span> apps
+        </div>
+      </div>
+
+        <div class="stats">
+          <span>Total catálogo: <strong id="total">-</strong></span>
+          <span>Coincidencias: <strong id="count">0</strong></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main">
+    <div id="alert" class="alert" hidden></div>
+
+    <div id="jsonPanel" class="json-panel" hidden>
+      <div class="json-panel__header">
+        <h3 class="json-panel__title">Respuesta JSON</h3>
+        <div class="json-panel__tools">
+          <button id="copyJsonBtn" class="btn btn--sm btn--ghost">Copiar</button>
+          <button id="clearJsonBtn" class="btn btn--sm btn--ghost">Limpiar</button>
+          <button id="closeJsonBtn" class="btn btn--sm btn--ghost" aria-label="Cerrar">Cerrar</button>
+        </div>
+      </div>
+      <pre id="jsonOutput" class="json-output" aria-live="polite"></pre>
+    </div>
+
+    <div id="loading" class="loading" hidden>
+      <div class="spinner"></div>
+      <p>Cargando…</p>
+    </div>
+
+    <section id="grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-content">
+      <button id="close" class="close" aria-label="Cerrar">×</button>
+      <div id="body"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container small">Datos de la Steam Web API</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
