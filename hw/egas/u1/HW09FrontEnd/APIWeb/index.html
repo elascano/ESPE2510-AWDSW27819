@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Noticias Live — Por tema o país</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./public/css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container header-inner">
+        <div class="brand">
+          <h1>Noticias Live</h1>
+          <div class="live-dot" id="liveDot" title="Actualización constante"></div>
+        </div>
+
+        <nav class="nav" aria-label="Secciones">
+          <a href="#" data-q="" data-section="home" class="active">Inicio</a>
+          <a href="#" data-q="" data-section="latest">Lo último</a>
+          <a href="#" data-q="tecnología" data-section="tech">Tecnología</a>
+          <a href="#" data-q="economía" data-section="business">Economía</a>
+        </nav>
+
+        <form id="searchForm" class="search">
+          <input id="q" type="search" placeholder="Buscar tema, persona o palabra clave" />
+          <select id="country" aria-label="País">
+            <option value="">Todo el mundo</option>
+            <option value="us">Estados Unidos</option>
+            <option value="gb">Reino Unido</option>
+            <option value="es">España</option>
+            <option value="fr">Francia</option>
+            <option value="de">Alemania</option>
+            <option value="ar">Argentina</option>
+            <option value="mx">México</option>
+          </select>
+          <button type="submit" class="btn-primary">Buscar</button>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="meta-row">
+          <div class="meta-left">
+            <span id="status">—</span>
+            <button id="refreshBtn" title="Refrescar ahora" class="icon-btn">🔄</button>
+          </div>
+        </div>
+
+        <section id="feature" class="feature"></section>
+
+        <section id="newsGrid" class="grid"></section>
+
+        <div id="empty" class="empty">Introduce un tema o selecciona un país y pulsa Buscar ✨</div>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <div class="container foot-inner">
+        <div>© <strong>Noticias Live</strong></div>
+        <div>Powered by NewsAPI • Demo</div>
+      </div>
+    </footer>
+
+    <script src="./public/js/app.js"></script>
+  </body>
+</html>
