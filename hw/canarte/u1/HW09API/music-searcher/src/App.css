@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ea668717;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #ea6687;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto 40px;
+  max-width: 600px;
+}
+
+input {
+  flex: 1;
+  padding: 15px 25px;
+  font-size: 16px;
+  border: 2px solid #ea668767;
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s;
+  background: white;
+}
+
+input:focus {
+  border-color: #ea6687;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+button {
+  padding: 15px 40px;
+  background: #ea6687;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background: #da4067;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(234, 102, 157, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.loading {
+  text-align: center;
+  color: #ea6687;
+  font-size: 1.2rem;
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.artist-info {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  border: 1px solid #ea668767;
+}
+
+.artist-info img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 4px solid #f7fafc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.artist-info h2 {
+  color: #ea6687de;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.followers {
+  color: #967180;
+  font-size: 1rem;
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+.top-tracks {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ea668767;
+}
+
+.top-tracks h3 {
+  color: #ea6687de;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.track-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  background: #fcf7f9;
+  border-radius: 12px;
+  transition: all 0.3s;
+  border: 1px solid #f0e2ea;
+}
+
+.track-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  background: #f7edf0;
+}
+
+.track-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ea6687de;
+  min-width: 40px;
+  text-align: center;
+}
+
+.track-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.track-info {
+  flex: 1;
+}
+
+.track-info h4 {
+  color: #9e6175;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.album {
+  color: #967182;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.track-stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  color: #c0a0af;
+  font-weight: 500;
+}
+
+audio {
+  width: 100%;
+  height: 35px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  .artist-info {
+    padding: 30px 20px;
+  }
+
+  .artist-info img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .track-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .track-number {
+    font-size: 1.5rem;
+  }
+
+  .track-stats {
+    justify-content: center;
+  }
+}
