@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg1: #0f172a;
+    --bg2: #0b2545;
+    --card: #0f1724;
+    --muted: #9aa7bf;
+    --accent: #38bdf8;
+    --accent-2: #60a5fa;
+    --glass: rgba(255, 255, 255, 0.04);
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: #0a0f1a;
+
+    color: #e6eef8;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 20px;
+}
+
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border-radius: calc(var(--radius) + 4px);
+    padding: 28px;
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+    letter-spacing: -0.2px;
+    color: #f2fbff;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+#bookInput {
+    flex: 1;
+    padding: 12px 14px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    color: #e6eef8;
+    border-radius: 10px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: box-shadow .18s ease, transform .12s ease;
+}
+
+#bookInput:focus {
+    box-shadow: 0 6px 18px rgba(56, 189, 248, 0.08), inset 0 0 0 1px rgba(56, 189, 248, 0.12);
+    transform: translateY(-1px);
+}
+
+#searchButton {
+    padding: 12px 16px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    color: #012233;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+#searchButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.18);
+}
+
+#searchButton:active {
+    transform: translateY(-1px);
+}
+
+.results-container {
+    margin-top: 6px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+}
+
+.results-container>p {
+    grid-column: 1/-1;
+    text-align: center;
+    color: var(--muted);
+    padding: 26px 12px;
+    background: var(--glass);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.book-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+    background: #0a0f1a;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    background: #0d1423;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+
+.book-card img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.book-info .title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f8fdff;
+    line-height: 1.2;
+}
+
+.book-info .author {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.book-info .meta {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.book-info a {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.book-info a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width:640px) {
+    .search-bar {
+        flex-direction: column;
+    }
+
+    #searchButton {
+        width: 100%;
+    }
+
+    .results-container {
+        grid-template-columns: 1fr;
+    }
+
+    .book-card {
+        padding: 10px;
+    }
+
+    .book-card img {
+        width: 68px;
+        height: 96px;
+    }
+}
