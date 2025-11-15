@@ -1,0 +1,17 @@
+.contenedor {
+    position: absolute; /* Esto hace que el header se quede fijo en la ventana */
+    width: 100%; /* Aseguro que ocupe todo el ancho disponible */
+    top: 0; /* Lo fija en la parte superior de la ventana */
+    left: 0; /* Lo fija en la parte izquierda de la ventana */
+
+    text-align: center;
+    padding: 20px;
+    background-color: aqua;
+
+}
+
+.box {
+    border: 2px solid black;
+    margin: 29px ;
+
+}
