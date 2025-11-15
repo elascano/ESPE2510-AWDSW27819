@@ -1,0 +1,269 @@
+.App {
+  text-align: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Contenedor del buscador */
+.search-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.search-container h1 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+/* Estilo del input de búsqueda */
+.search-input {
+  width: 100%;
+  max-width: 350px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #ff6b35;
+}
+
+/* Secciones */
+.section {
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  color: #333;
+  border-bottom: 2px solid #ff6b35;
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+}
+
+/* Contenedor de tarjetas - Grid 3x3 */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Responsive para tablets */
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* Tarjetas simplificadas */
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+}
+
+.card h3 {
+  color: #ff6b35;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.card-image {
+  width: 100%;
+  max-width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #999;
+  z-index: 1001;
+}
+
+.close-button:hover {
+  color: #ff6b35;
+}
+
+.modal-header {
+  padding: 20px 20px 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.modal-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  font-size: 16px;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  color: #ff6b35;
+  border-bottom-color: #ff6b35;
+}
+
+.tab:hover {
+  color: #ff6b35;
+}
+
+.modal-body {
+  display: flex;
+  padding: 30px;
+  gap: 30px;
+}
+
+.modal-image {
+  flex: 0 0 240px;
+}
+
+.modal-image img {
+  width: 230px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-details {
+  flex: 1;
+  text-align: left;
+}
+
+.modal-details h3 {
+  color: #ff6b35;
+  margin-bottom: 20px;
+  font-size: 24px;
+  border-bottom: 2px solid #ff6b35;
+  padding-bottom: 10px;
+}
+
+.modal-details p {
+  margin: 12px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.modal-details strong {
+  color: #333;
+}
+
+.json-container {
+  padding: 20px;
+  background: #f8f9fa;
+  margin: 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.json-container pre {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive para modal */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .modal-body {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .modal-image {
+    flex: none;
+  }
+  
+  .modal-image img {
+    height: 200px;
+  }
+}

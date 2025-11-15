@@ -1,0 +1,250 @@
+/* Estilos generales para quitar márgenes por defecto del navegador */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    padding-top: 150px; /* Ajusta este valor a la altura total de tu header */
+}
+
+header {
+    position: fixed; /* Esto hace que el header se quede fijo en la ventana */
+    width: 100%; /* Aseguro que ocupe todo el ancho disponible */
+    top: 0; /* Lo fija en la parte superior de la ventana */
+    left: 0; /* Lo fija en la parte izquierda de la ventana */
+    z-index: 1000; /* Asegura que el header esté por encima de otros contenidos */
+
+    text-align: center;
+    padding: 20px;
+
+    background-image: url('../img/1.jpg'); 
+    background-size: cover; /* La imagen cubrirá todo el header */
+    background-position: center; /* Centra la imagen en el header */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+.portada-texto h1 {
+    font-size: 3em; /* Tamaño de letra grande para el nombre (3 veces el tamaño base) */
+    margin-bottom: 5px; /* Pequeño margen entre el nombre y "Estudiante" */
+    color: #333; /* Un color oscuro para el texto del nombre */
+}
+
+.menu-navegacion {
+    font-size: 20px; /* Tamaño de letra grande para el menú de navegación */
+    position: absolute; /* Posicionamiento absoluto respecto a su contenedor (header) */
+    top: 20px; /* Separación desde la parte superior del header */
+    right: 60px; /* Separación desde la parte derecha del header */
+}
+
+.menu-navegacion ul {
+    list-style: none; /* Quita los puntos de la lista */
+    margin: 0;
+    padding: 0;
+}
+
+.menu-navegacion li {
+    display: inline-block; /* Hace que los elementos de la lista se muestren en línea */
+    margin-left: 20px; /* Espacio entre los elementos del menú */
+}
+
+.menu-navegacion a {
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: #333; /* Color azul para los enlaces */
+    font-weight: bold; /* Texto en negrita para los enlaces */
+}
+
+.menu-navegacion a:hover {
+    color: #ffffff; /* Color más oscuro al pasar el ratón por encima */
+}
+
+/* --- SECCIÓN INICIO --- */
+.seccion-inicio {
+    padding: 60px 40px; /* Relleno superior/inferior y lateral para la sección */
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+.contenido-inicio {
+    display: flex; /* Activa Flexbox para los elementos hijos */
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor Flex */
+    justify-content: center; /* Centra horizontalmente el grupo (imagen+texto) */
+    max-width: 1000px; /* Limita el ancho máximo del contenido */
+    margin: 0 auto; /* Centra el contenedor `contenido-inicio` en la página */
+    gap: 40px; /* Espacio entre los elementos de texto y la imagen */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.texto-inicio {
+    flex: 1; /* Permite que este div ocupe el espacio disponible */
+    min-width: 300px; /* Asegura un ancho mínimo para el texto antes de envolver */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.texto-inicio h2 {
+    font-size: 2.5em; /* Tamaño grande para el título de la sección */
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.texto-inicio p {
+    font-size: 1.1em; /* Un poco más grande para el texto principal */
+    line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
+    color: #555;
+}
+
+.imagen-inicio {
+    flex-shrink: 0; /* Evita que la imagen se encoja más allá de su tamaño si hay poco espacio */
+    width: 300px; /* Ancho deseado para la imagen */
+    height: 300px; /* Altura deseada para la imagen */
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    overflow: hidden; /* Recorta cualquier parte de la imagen que exceda el círculo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para la imagen */
+}
+
+.imagen-inicio img {
+    width: 100%; /* Asegura que la imagen ocupe todo el espacio de su contenedor */
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para que cubra el área sin distorsionarla */
+    display: block; /* Elimina el espacio extra debajo de la imagen */
+}
+
+/* --- SECCIÓN ESTUDIOS--- */
+.seccion-estudios {
+    padding: 60px 40px;
+    background-color: #f9f9f9; /* Un color de fondo ligeramente diferente */
+    /* Quitamos el text-align: center para que el h2 de .titulo-seccion-izquierda funcione */
+}
+
+.contenido-estudios {
+    max-width: 800px;
+    margin: 0 auto; 
+    /* Quitamos text-align: center; de aquí también, para que los elementos dentro fluyan a la izquierda */
+}
+
+.lista-estudios {
+    list-style: none; /* Quitamos las viñetas por defecto */
+    padding: 0; /* Quitamos el padding por defecto de la lista */
+    margin: 0;
+}
+
+.lista-estudios li {
+    background-color: transparent; /* Fondo transparente */
+    padding: 20px 0; /* Padding vertical, sin horizontal */
+    margin-bottom: 25px; /* Espacio entre cada ítem de estudio */
+    border-radius: 0; /* Sin bordes redondeados */
+    box-shadow: none; /* Sin sombra */
+    border-bottom: 1px solid #a9a9a9; /* Una línea divisoria sutil */
+    text-align: left; /* Aseguramos que todo el texto esté a la izquierda */
+    position: relative;
+}
+
+.lista-estudios li:last-child {
+    border-bottom: none; /* No queremos línea divisoria en el último elemento */
+    margin-bottom: 0;
+}
+
+
+.lista-estudios li h3 {
+    font-size: 1.8em; /* Un poco más grande para el título */
+    color: #333; /* Un color más oscuro */
+    margin-bottom: 8px;
+    margin-left: 0px; /* Asegurarse que no tenga margen extra por defecto */
+}
+
+.lista-estudios li .institucion {
+    font-size: 1.15em; /* Ligeramente más grande */
+    color: #555;
+    font-weight: 600; /* Un poco más de negrita */
+    margin-bottom: 4px;
+}
+
+.lista-estudios li .fechas {
+    font-size: 0.95em;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.lista-estudios li .descripcion {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+
+/* --- SECCIÓN SOBRE MÍ --- */
+.seccion-sobre-mi {
+    padding: 60px 40px; /* Relleno superior/inferior y lateral */
+    text-align: center; /* Centra todo el texto dentro de esta sección */
+}
+
+.contenido-sobre-mi {
+    max-width: 900px; /* Limita el ancho del contenido principal */
+    margin: 0 auto; /* Centra el contenedor `contenido-sobre-mi` en la página */
+}
+
+.seccion-sobre-mi h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 30px; /* Espacio debajo del título principal */
+}
+
+.seccion-sobre-mi p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px; /* Espacio debajo de cada párrafo */
+    max-width: 700px; /* Limita el ancho de los párrafos para mejor legibilidad */
+    margin-left: auto; /* Centra los párrafos de ancho limitado */
+    margin-right: auto;
+}
+
+.seccion-sobre-mi h3 {
+    font-size: 2em;
+    color: #333;
+    margin-top: 40px; /* Espacio encima del título de habilidades */
+    margin-bottom: 30px;
+}
+
+.habilidades-container {
+    display: flex; /* Activa Flexbox para que los items se pongan en fila */
+    flex-wrap: wrap; /* Permite que las habilidades se envuelvan a la siguiente línea */
+    justify-content: center; /* Centra las habilidades horizontalmente */
+    gap: 30px; /* Espacio entre cada habilidad */
+    margin-top: 30px;
+}
+
+.habilidad-item {
+    display: flex; /* Activa Flexbox para el icono y el texto dentro de cada habilidad */
+    flex-direction: column; /* Coloca el icono y el texto uno encima del otro */
+    align-items: center; /* Centra el icono y el texto horizontalmente */
+    width: 120px; /* Ancho fijo para cada item de habilidad */
+    text-align: center;
+    background-color: #ffffff; /* Fondo blanco para cada item */
+    padding: 15px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    transition: transform 0.3s ease; /* Transición suave para el efecto hover */
+}
+
+
+.habilidad-item img {
+    width: 60px; /* Tamaño del icono */
+    height: 1px;
+    object-fit: contain; /* Asegura que el icono se vea completo sin recortarse */
+    margin-bottom: 10px; /* Espacio entre el icono y el texto */
+}
+
+.habilidad-item p {
+    font-size: 1em;
+    font-weight: bold;
+    color: #444;
+    margin: 0; /* Quita márgenes por defecto del párrafo */
+}
+
+/* --- FOOTER--- */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.9em;
+}
