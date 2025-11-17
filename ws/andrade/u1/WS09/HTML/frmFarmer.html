@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChikenFarmer - Danna Andrade</title>
+</head>
+<body>
+
+    <div>
+        <nav>
+            <a href="../index.html">Home</a> |
+            <a href="frmFarmer.html">Add Farmer</a> |
+            <a href="fmrChicken.html">Add Chicken</a> |
+            <a href="egg.html">Egg</a>
+        </nav>
+    </div>
+    <h1>Hello, Farmer !</h1>
+
+
+
+    <!-- Table chicken id, coop_id, name, color, age, is_molting / doStuff,cluck ,wander,eat, drink, poop, iayAnEgg-->
+    <!-- Table chicken_coop id, farmer_id / add, remove, resetIteration,next -->
+    <!-- Table chicken_farmer id, name / add, remove, resetIteration,next -->
+    <!-- Table egg id, chicken_id -->
+
+    <form>
+
+        <label for="nameFarmer">Enter farmer name:</label>
+        <input type="text" id="nameFarmer" name="nameFarmer" required>
+        <br><br>
+        <label for="nameCoop">Enter coop name:</label>
+        <input type="text" id="nameCoop" name="nameCoop" required>
+        <br><br>
+        <label for="idCoop">Your coop id is:</label>
+        <input type="text" id="idCoop" name="idCoop" readonly>
+        <br><br>
+        <button type="submit">Submit</button>
+        <br><br>
+
+    </form>
+
+
+</body>
+</html>
