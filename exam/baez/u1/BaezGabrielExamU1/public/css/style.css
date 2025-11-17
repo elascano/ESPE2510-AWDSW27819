@@ -1,0 +1,5 @@
+.card{
+    border-radius: 10px;
+    box-shadow: rgba(#0011ffef, #0000, blue, 10px);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
