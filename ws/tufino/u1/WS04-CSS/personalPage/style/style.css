@@ -1,0 +1,55 @@
+.profile{
+    color: #00FF00;
+}
+
+.main-content{
+    align-self: auto;
+    width: auto;
+}
+
+.quote {
+    font-style: italic;
+    color: #333;
+    border-left: 4px solid #0077cc;
+    padding-left: 10px;
+    margin: 20px 0;
+    animation: fadeIn 5s ease;
+}
+
+@keyframes fadeIn {
+    from{opacity:0; transform:translationY(10px);}
+    to {opacity:1; transform:translationY(0);}
+}
+.barr{
+    background-color: #0000ff;
+    padding: 1 rem 0 rem;
+    display: flex;
+    color: #ff0000;
+    overflow: hidden;
+
+}
+
+.barr ul li{
+    float: left;
+}
+
+a{
+  color: #ff0000;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.about-me{
+    padding: 25px;
+    margin: 55px;
+    border-radius: 10px;
+    background-color: #00f0ff;
+    color: #333;
+}
+
+.section-tittle{
+    font-weight: bold;
+    font-size: 25px;
+    text-transform: uppercase;
+    margin: 30px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
