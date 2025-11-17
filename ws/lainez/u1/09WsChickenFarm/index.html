@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChikenFarm</title>
+
+</head>
+<body>
+
+
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="card-custom w-100" style="max-width: 480px;">
+        <h1 class="mb-4 text-center">Chicken Farmer</h1>
+          <a href="#" class="btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#createChicken">Add Chicken</a>
+          <a href="#" class="btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#EditChicken">Remove Chicken</a>
+
+
+        </div>
+      </div>
+
+
+    <div class="modal fade" id="createChicken" tabindex="-1" aria-labelledby="createChickenLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          
+          <div class="modal-header">
+            <h5 class="modal-title text-primary" id="createChickenLabel">Create Chicken</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+
+          <div class="modal-body">
+            <form id="createChickenForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="mb-3">
+                    <label for="color" class="form-label">Color</label>
+                    <input type="text" class="form-control" id="color">
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="age">
+                </div>
+
+                <div class="mb-3">
+                    <label for="isMolting" class="form-label">Is Molting</label>
+                    <select class="form-select" aria-label="Default select example">
+                <option selected>Select a option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                </select>
+                </div>
+
+
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="modal fade" id="modalEditChicken" tabindex="-1" aria-labelledby="modalEditChickenLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content shadow rounded">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="modalEditChickenLabel">Editar Usuario</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id_usuario" />
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre_usuario" required />
+                    </div>
+                    <div class="mb-3">
+                    <label for="color" class="form-label">Color</label>
+                    <input type="text" class="form-control" id="color">
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="age">
+                </div>
+
+                <div class="mb-3">
+                    <label for="isMolting" class="form-label">Is Molting</label>
+                    <select class="form-select" aria-label="Default select example">
+                <option selected>Select a option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btn-actualizar-usuario" class="btn btn-primary">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+          <script src="script.js"></script>
+</body> 
+</html>
