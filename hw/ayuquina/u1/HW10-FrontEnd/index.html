@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicBrainz Explorer of Danny Ayuquina</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 MusicBrainz Explorer</h1>
+            <p class="subtitle">Descubre información sobre artistas, álbumes y canciones</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('artists')">🎤 Buscar Artistas</button>
+            <button class="tab" onclick="switchTab('albums')">💿 Explorar Álbumes</button>
+            <button class="tab" onclick="switchTab('songs')">🎵 Buscar Canciones</button>
+        </div>
+
+        <!-- Tab 1: Buscar Artistas -->
+        <div id="artists" class="tab-content active">
+            <div class="search-section">
+                <h2 style="margin-bottom: 20px; color: #333;">Buscar Artistas</h2>
+                <div class="search-box">
+                    <input type="text" id="artistSearch" placeholder="Ej: The Beatles, Queen, Shakira..."
+                        onkeypress="handleKeyPress(event, 'searchArtists')">
+                    <button onclick="searchArtists()">Buscar</button>
+                </div>
+                <div id="artistResults"></div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Explorar Álbumes -->
+        <div id="albums" class="tab-content">
+            <div class="search-section">
+                <h2 style="margin-bottom: 20px; color: #333;">Explorar Álbumes de un Artista</h2>
+                <div class="search-box">
+                    <input type="text" id="albumSearch" placeholder="Busca un artista para ver sus álbumes..."
+                        onkeypress="handleKeyPress(event, 'searchAlbums')">
+                    <button onclick="searchAlbums()">Buscar</button>
+                </div>
+                <div id="albumResults"></div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Buscar Canciones -->
+        <div id="songs" class="tab-content">
+            <div class="search-section">
+                <h2 style="margin-bottom: 20px; color: #333;">Buscar Canciones</h2>
+                <div class="search-box">
+                    <input type="text" id="songSearch" placeholder="Ej: Bohemian Rhapsody, Imagine..."
+                        onkeypress="handleKeyPress(event, 'searchSongs')">
+                    <button onclick="searchSongs()">Buscar</button>
+                </div>
+                <div id="songResults"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
