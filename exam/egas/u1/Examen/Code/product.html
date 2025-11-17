@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="./static/css/styles.css">
+  <link rel="stylesheet" href="./static/css/products.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    <!-- Header removed -->
+
+    <!-- Nav removed -->
+
+    <main>
+        <div class="container">
+            <h1 class="text-center my-4 site-title">Productos</h1>
+            
+            <!-- Barra de búsqueda con selector de categorías a la derecha -->
+            <div class="row mb-4 align-items-center">
+              <div class="col-12 col-md-9">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="search-input" placeholder="Buscar productos...">
+                  <button class="btn btn-outline-secondary" type="button" id="search-btn">
+                    <i class="fa-solid fa-search"></i> Buscar
+                  </button>
+                  <select id="sort-select" class="form-select" style="max-width:220px;">
+                    <option value="default">Ordenar: predeterminado</option>
+                    <option value="alpha-asc">Nombre A → Z</option>
+                    <option value="alpha-desc">Nombre Z → A</option>
+                    <option value="price-asc">Precio ↑</option>
+                    <option value="price-desc">Precio ↓</option>
+                    <option value="stock-asc">Stock ↑</option>
+                    <option value="stock-desc">Stock ↓</option>
+                  </select>
+                  <select id="category-select" class="form-select ms-2" style="max-width:220px;">
+                    <option value="all">Categoría: Todas</option>
+                    <!-- Las categorías se cargarán dinámicamente desde la API -->
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-md-3 text-md-end mt-2 mt-md-0">
+                <!-- Category controls removed as requested -->
+                <!-- (categorías eliminadas) -->
+              </div>
+            </div>
+            
+            <!-- Contenedor de productos -->
+            <div class="row" id="products-container">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+            </div>
+
+      <!-- Reviews Widget removed per request -->
+      <!-- Product Detail Modal (used by 'Ver más' on product cards) -->
+      <div class="modal fade" id="productDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalProductTitle">Producto</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-5 text-center">
+                  <img id="modalProductImage" src="" alt="Producto" class="img-fluid mb-3" style="max-height:300px; object-fit:contain;">
+                  <div><strong id="modalProductPrice"></strong></div>
+                  <div class="text-muted small" id="modalProductStock"></div>
+                </div>
+                <div class="col-md-7">
+                  <p id="modalProductDescription"></p>
+
+                  <hr>
+                  <h6>Reseñas</h6>
+                  <div id="modalReviewsList" class="mb-3">Cargando reseñas...</div>
+
+                  <button id="modalAddReviewBtn" class="btn btn-outline-primary mb-3">Agregar reseña</button>
+
+                  <div id="modalReviewFormContainer" style="display:none;">
+                    <form id="modalReviewForm">
+                      <div class="row g-2">
+                        <div class="col-md-6"><input id="modalReviewName" class="form-control" placeholder="Nombre (opcional)"></div>
+                        <div class="col-md-6"><input id="modalReviewEmail" type="email" class="form-control" placeholder="Email (opcional)"></div>
+                      </div>
+                      <div class="mt-2">
+                        <select id="modalReviewRating" class="form-select">
+                          <option value="5">5 estrellas</option>
+                          <option value="4">4 estrellas</option>
+                          <option value="3">3 estrellas</option>
+                          <option value="2">2 estrellas</option>
+                          <option value="1">1 estrella</option>
+                        </select>
+                      </div>
+                      <div class="mt-2"><input id="modalReviewTitle" class="form-control" placeholder="Título (opcional)"></div>
+                      <div class="mt-2"><textarea id="modalReviewBody" class="form-control" rows="4" placeholder="Escribe tu reseña..."></textarea></div>
+                      <div class="mt-2 text-end">
+                        <button class="btn btn-primary" type="submit">Enviar reseña</button>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+    </main>
+
+    <!-- Footer removed -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./static/js/apiClient.js"></script>
+  <script src="./static/js/productManager.js"></script>
+  <script src="./static/js/checkoutManager_new.js"></script>
+  <script src="./static/js/theme-toggle.js"></script>
+  <script src="./static/js/reviews.js"></script>
+  <script src="./static/js/productDetailModal.js"></script>
+  <script src="./static/js/main.js"></script>
+
+  <script>
+    // Cargar productos al iniciar la página
+    document.addEventListener('DOMContentLoaded', async function() {
+        console.log('🚀 Página de productos cargada');
+        
+        // Actualizar interfaz de usuario
+        try {
+            if (typeof updateUserInterface === 'function') {
+                updateUserInterface();
+            }
+        } catch (e) {
+            console.warn('Error actualizando interfaz de usuario:', e);
+        }
+
+        // Cargar productos
+        try {
+            if (typeof loadProducts === 'function') {
+                await loadProducts();
+            } else {
+                console.error('❌ Función loadProducts no encontrada');
+            }
+        } catch (error) {
+            console.error('❌ Error cargando productos:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'No se pudieron cargar los productos. Por favor, recarga la página.',
+                icon: 'error'
+            });
+        }
+
+        // Configurar actualización periódica del stock cada 30 segundos
+        setInterval(async function() {
+            if (typeof productManager !== 'undefined' && productManager.syncWithAdminProducts) {
+                console.log('🔄 Sincronización periódica de productos...');
+                await productManager.syncWithAdminProducts();
+            }
+        }, 30000); // 30 segundos
+    });
+
+    // Función para agregar al carrito con verificación de stock
+    async function addToCart(productId) {
+        try {
+            console.log('🛒 Intentando agregar producto al carrito:', productId);
+            
+            // Obtener producto actualizado
+            const product = productManager ? productManager.getProductById(productId) : null;
+            
+            if (!product) {
+                console.error('❌ Producto no encontrado:', productId);
+                Swal.fire('Error', 'Producto no encontrado', 'error');
+                return;
+            }
+
+            console.log('📦 Producto encontrado:', {
+                id: product.id,
+                nombre: product.nombre,
+                stock: product.stock,
+                tipo: typeof product.stock
+            });
+
+            // Verificar stock disponible
+            const currentStock = Number(product.stock) || 0;
+            
+            console.log(`📊 Stock actual procesado: ${currentStock}`);
+            
+            if (currentStock === 0) {
+                console.warn('⚠️ Producto sin stock');
+                Swal.fire({
+                    title: 'Sin Stock',
+                    text: 'Este producto está agotado',
+                    icon: 'warning'
+                });
+                return;
+            }
+
+            // Verificar cantidad en carrito
+            const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+            const itemInCart = carrito.find(item => String(item.id) === String(productId));
+            const cantidadEnCarrito = itemInCart ? Number(itemInCart.cantidad) : 0;
+
+            console.log(`🛒 Cantidad en carrito: ${cantidadEnCarrito}`);
+
+            if (cantidadEnCarrito >= currentStock) {
+                console.warn('⚠️ Stock insuficiente');
+                Swal.fire({
+                    title: 'Stock Limitado',
+                    text: `Solo hay ${currentStock} unidades disponibles y ya tienes ${cantidadEnCarrito} en tu carrito`,
+                    icon: 'warning'
+                });
+                return;
+            }
+
+            // Agregar al carrito
+            if (itemInCart) {
+                itemInCart.cantidad = cantidadEnCarrito + 1;
+                console.log(`➕ Incrementando cantidad en carrito: ${itemInCart.cantidad}`);
+            } else {
+                carrito.push({
+                    id: product.id,
+                    nombre: product.nombre,
+                    precio: product.precio,
+                    imagen: product.imagen,
+                    cantidad: 1,
+                    stock: currentStock
+                });
+                console.log('➕ Nuevo producto agregado al carrito');
+            }
+
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            // Actualizar contador del carrito
+            if (typeof updateCartCount === 'function') {
+                updateCartCount();
+            }
+
+            // Mostrar notificación
+            Swal.fire({
+                title: '¡Agregado!',
+                text: `${product.nombre} agregado al carrito`,
+                icon: 'success',
+                timer: 1500,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+
+            console.log('✅ Producto agregado exitosamente al carrito');
+
+        } catch (error) {
+            console.error('❌ Error agregando al carrito:', error);
+            Swal.fire('Error', 'No se pudo agregar el producto al carrito', 'error');
+        }
+    }
+    window.addToCart = addToCart;
+  </script>
+
+</body>
+</html>
