@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Chicken</title>
+    <link rel="stylesheet" href="../styles/styleIngredients.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="ingredients-container">
+        <div class="ingredients-header">
+            <h2><i data-lucide="apple"></i> Buscar Chicken</h2>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="searchId" placeholder="Ingresa _id (ObjectId) o chickenId">
+                    <button class="btn-primary" id="btnFind">Find Chicken</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result" style="margin-top:20px;">
+            <!-- Result will be shown here -->
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
