@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  arender:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: arender
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      # Add more envs if needed, e.g. DB_URL
+    restart: unless-stopped
+    # Uncomment to mount local code during dev (hot-reload if supported)
+    # volumes:
+    #   - .:/usr/src/app
+
+# Add dependent services (DB/cache) here if required
+# e.g.
+#  mongo:
+#    image: mongo:6
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - mongo_data:/data/db
+#
+#volumes:
+#  mongo_data:
