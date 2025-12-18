@@ -1,0 +1,17 @@
+{
+  "name": "EXAMUNIT2",
+  "version": "1.0.0",
+  "description": "Notebooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Josué Guayasamín",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.1"
+  }
+}
