@@ -1,0 +1,207 @@
+{
+  "info": {
+    "name": "IVA Calculator API",
+    "description": "Collection for IVA Calculator Backend API - 15% Tax Calculation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://iva-calculator-backend.onrender.com",
+      "type": "string"
+    },
+    {
+      "key": "localUrl",
+      "value": "http://localhost:3001",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        },
+        "description": "Check if the API is running"
+      },
+      "response": []
+    },
+    {
+      "name": "Calculate IVA",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 100\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/calculate-iva",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "calculate-iva"]
+        },
+        "description": "Calculate 15% IVA from a given price"
+      },
+      "response": []
+    },
+    {
+      "name": "Save Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Laptop\",\n  \"price\": 500\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/products",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products"]
+        },
+        "description": "Save a product to MongoDB database"
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Products",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/products",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products"]
+        },
+        "description": "Get all products from MongoDB database"
+      },
+      "response": []
+    },
+    {
+      "name": "Search Product by Name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/products/search/Laptop",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", "search", "Laptop"]
+        },
+        "description": "Search for a product by name and get price with calculated IVA (15%)"
+      },
+      "response": []
+    },
+    {
+      "name": "Calculate IVA (Example 1 - Small Price)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 1.50\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/calculate-iva",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "calculate-iva"]
+        },
+        "description": "Calculate IVA for $1.50 (Result: $0.23)"
+      },
+      "response": []
+    },
+    {
+      "name": "Calculate IVA (Example 2 - Large Price)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 1000\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/calculate-iva",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "calculate-iva"]
+        },
+        "description": "Calculate IVA for $1000 (Result: $150)"
+      },
+      "response": []
+    },
+    {
+      "name": "Save Product (Example - Magnum)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Magnum Chocolate Blanco\",\n  \"price\": 1.50\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/products",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products"]
+        },
+        "description": "Save Magnum Chocolate Blanco product"
+      },
+      "response": []
+    },
+    {
+      "name": "Save Product (Example - Mouse)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Mouse Logitech\",\n  \"price\": 25.99\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/products",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products"]
+        },
+        "description": "Save Mouse Logitech product"
+      },
+      "response": []
+    }
+  ]
+}
