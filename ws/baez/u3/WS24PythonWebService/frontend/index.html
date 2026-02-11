@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <header class="header">
+                <h1>Customer Management</h1>
+                <p class="subtitle">User administration system</p>
+            </header>
+
+            <div class="loading" v-if="loading">
+                <div class="spinner"></div>
+                <p>Loading data...</p>
+            </div>
+
+            <div class="error-message" v-if="error">
+                <span>{{ error }}</span>
+                <button @click="loadCustomers" class="retry-btn">Retry</button>
+            </div>
+
+            <div class="table-container" v-if="!loading && !error">
+                <div class="table-header">
+                    <h2>Customer List ({{ customers.length }})</h2>
+                    <div class="total-sales-box">
+                        <span class="total-label">Total Sales:</span>
+                        <span class="total-value">{{ formatCurrency(totalSales) }}</span>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Type</th>
+                                <th>Discount</th>
+                                <th>Total Sales</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="customer in customers" :key="customer.id">
+                                <td>
+                                    <div class="cell-content">
+                                        <span class="name">{{ customer.fullName }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="email">{{ customer.email }}</span>
+                                </td>
+                                <td>
+                                    <span class="badge" :class="'badge-' + customer.type.toLowerCase()">
+                                        {{ customer.type }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="discount">{{ formatDiscount(customer.discount) }}</span>
+                                </td>
+                                <td>
+                                    <span class="total-sale">{{ formatCurrency(customer.totalSale) }}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="empty-state" v-if="customers.length === 0">
+                    <p>No customers registered</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>

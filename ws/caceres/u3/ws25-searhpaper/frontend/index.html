@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SearchPaper - Scientific Articles Finder</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="header">
+            <h1>🔬 SearchPaper</h1>
+            <p>Search scientific articles in PLOS</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    v-model="searchQuery" 
+                    @keyup.enter="search"
+                    placeholder="Search scientific articles... (e.g., climate change, covid-19, machine learning)"
+                    class="search-input"
+                    :disabled="loading"
+                >
+                <button 
+                    @click="search" 
+                    class="search-button"
+                    :disabled="loading || !searchQuery.trim()"
+                >
+                    {{ loading ? 'Searching...' : 'Search' }}
+                </button>
+            </div>
+            <div class="search-controls" v-if="results">
+                <div class="results-info">
+                    Showing {{ results.papers.length }} of {{ results.totalResults }} results
+                </div>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <div class="view-toggle">
+                        <button 
+                            @click="toggleView('grid')" 
+                            class="view-button"
+                            :class="{ active: viewMode === 'grid' }"
+                        >
+                            🔲 Cards
+                        </button>
+                        <button 
+                            @click="toggleView('list')" 
+                            class="view-button"
+                            :class="{ active: viewMode === 'list' }"
+                        >
+                            📋 List
+                        </button>
+                    </div>
+                    <div class="sort-container">
+                        <label class="sort-label">Sort by:</label>
+                        <select v-model="sortBy" @change="changeSortOrder" class="sort-select">
+                            <option value="relevance">Relevance</option>
+                            <option value="year-desc">Year (newest)</option>
+                            <option value="year-asc">Year (oldest)</option>
+                            <option value="title-asc">Title (A-Z)</option>
+                            <option value="title-desc">Title (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="error" class="error">
+            <strong>Error:</strong> {{ error }}
+        </div>
+
+        <div v-if="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <div>Searching scientific articles...</div>
+        </div>
+
+        <div v-if="!loading && results && results.papers.length === 0" class="no-results">
+            No results found for "{{ searchQuery }}"
+        </div>
+
+        <!-- Vista de tarjetas -->
+        <div v-if="!loading && results && results.papers.length > 0 && viewMode === 'grid'" class="papers-grid">
+            <div v-for="paper in results.papers" :key="paper.id" class="paper-card">
+                <h2 class="paper-title">{{ paper.title }}</h2>
+                
+                <div class="paper-meta">
+                    <div class="paper-meta-item">
+                        <span>📅</span>
+                        <span>{{ formatDate(paper.publicationDate) }}</span>
+                    </div>
+                    <div class="paper-meta-item" v-if="paper.journal">
+                        <span>📖</span>
+                        <span>{{ paper.journal }}</span>
+                    </div>
+                    <div class="paper-meta-item" v-if="paper.articleType">
+                        <span class="badge">{{ paper.articleType }}</span>
+                    </div>
+                </div>
+
+                <div class="paper-authors" v-if="paper.authors.length > 0">
+                    <strong>Authors:</strong> {{ formatAuthors(paper.authors) }}
+                </div>
+
+                <div class="paper-abstract" v-if="paper.abstract">
+                    {{ paper.abstract }}
+                </div>
+
+                <div class="paper-actions">
+                    <a :href="paper.downloadUrl" target="_blank" class="btn btn-primary" download>
+                        📥 Download PDF
+                    </a>
+                    <a :href="paper.viewUrl" target="_blank" class="btn btn-secondary">
+                        👁️ View Article
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de lista/tabla -->
+        <div v-if="!loading && results && results.papers.length > 0 && viewMode === 'list'" class="papers-list">
+            <table class="papers-table">
+                <thead>
+                    <tr>
+                        <th style="width: 35%">Title</th>
+                        <th style="width: 20%">Journal</th>
+                        <th style="width: 20%">Authors</th>
+                        <th style="width: 12%">Publication Date</th>
+                        <th style="width: 13%">DOI/Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="paper in results.papers" :key="paper.id">
+                        <td>
+                            <span class="table-title">{{ paper.title }}</span>
+                            <span class="badge" v-if="paper.articleType">{{ paper.articleType }}</span>
+                        </td>
+                        <td>{{ paper.journal || 'N/A' }}</td>
+                        <td class="table-authors">{{ formatAuthors(paper.authors) }}</td>
+                        <td>{{ formatDate(paper.publicationDate) }}</td>
+                        <td>
+                            <div class="table-actions">
+                                <a :href="paper.downloadUrl" target="_blank" class="btn btn-primary" download title="Download PDF">
+                                    📥
+                                </a>
+                                <a :href="paper.viewUrl" target="_blank" class="btn btn-secondary" title="View Article">
+                                    👁️
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div v-if="results && results.totalPages > 1" class="pagination">
+            <button 
+                @click="goToPage(1)" 
+                :disabled="currentPage === 1"
+                title="First page"
+            >
+                ⏮️
+            </button>
+            <button 
+                @click="goToPage(currentPage - 1)" 
+                :disabled="currentPage === 1"
+            >
+                ← Previous
+            </button>
+            
+            <template v-for="page in getVisiblePages()" :key="page">
+                <span v-if="page === '...'" class="page-ellipsis">...</span>
+                <button 
+                    v-else
+                    @click="goToPage(page)" 
+                    :class="{ active: currentPage === page }"
+                >
+                    {{ page }}
+                </button>
+            </template>
+            
+            <button 
+                @click="goToPage(currentPage + 1)" 
+                :disabled="currentPage === results.totalPages"
+            >
+                Next →
+            </button>
+            <button 
+                @click="goToPage(results.totalPages)" 
+                :disabled="currentPage === results.totalPages"
+                title="Last page"
+            >
+                ⏭️
+            </button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

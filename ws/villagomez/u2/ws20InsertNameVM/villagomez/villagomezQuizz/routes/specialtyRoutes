@@ -1,0 +1,116 @@
+const express = require('express');
+const router = express.Router();
+const specialties = require('../model/Specialties');
+const mongoose = require('mongoose');
+
+router.get('/specialties', async (req, res) => {
+    try {
+        const list = await specialties.find({ deleted: { $ne: true } });
+        res.json(list);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+router.get('/specialties/:id', async (req, res) => {
+    try {
+        const specialtyObject = await specialties.findOne({ id: req.params.id, deleted: { $ne: true } });
+        if (specialtyObject == null) {
+            return res.status(404).json(404);
+        } else {
+            res.json(specialtyObject);
+        }   
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+ });
+
+router.post('/specialties', async (req, res) => {
+    const specialtyObject = new specialties({
+        id: req.body.id,
+        name: req.body.name,
+        description: req.body.description
+    });
+    try {
+        const newSpecialty = await specialtyObject.save();
+        res.status(201).json(newSpecialty);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+// Update a specialty by id
+router.put('/specialties/:id', async (req, res) => {
+    try {
+        const update = {};
+        if (req.body.name !== undefined) update.name = req.body.name;
+        if (req.body.description !== undefined) update.description = req.body.description;
+
+        const updated = await specialties.findOneAndUpdate(
+            { id: req.params.id, deleted: { $ne: true } },
+            { $set: update },
+            { new: true }
+        );
+
+        if (!updated) return res.status(404).json({ message: 'Not found' });
+        res.json(updated);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+// Logical delete (set deleted=true)
+router.delete('/specialties/:id', async (req, res) => {
+    try {
+        const deletedDoc = await specialties.findOneAndUpdate(
+            { id: req.params.id, deleted: { $ne: true } },
+            { $set: { deleted: true } },
+            { new: true }
+        );
+        if (!deletedDoc) return res.status(404).json({ message: 'Not found or already deleted' });
+        res.json({ message: 'Deleted', id: req.params.id });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+module.exports = router;
+
+// Summary: number and list of doctors per specialty
+router.get('/specialties/doctors-summary', async (req, res) => {
+    try {
+        const db = mongoose.connection.db;
+        const doctorsColl = db.collection('Doctors');
+
+        const pipeline = [
+            {
+                $lookup: {
+                    from: 'Specialties',
+                    localField: 'specialty',
+                    foreignField: '_id',
+                    as: 'spec'
+                }
+            },
+            {
+                $addFields: {
+                    specialtyName: {
+                        $ifNull: [ { $arrayElemAt: [ '$spec.name', 0 ] }, { $ifNull: [ '$specialty', 'Unknown' ] } ]
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: '$specialtyName',
+                    count: { $sum: 1 },
+                    doctors: { $push: { id: '$_id', name: '$name' } }
+                }
+            },
+            { $project: { _id: 0, specialty: '$_id', count: 1, doctors: 1 } }
+        ];
+
+        const result = await doctorsColl.aggregate(pipeline).toArray();
+        res.json(result);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});

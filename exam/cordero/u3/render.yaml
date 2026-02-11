@@ -1,0 +1,18 @@
+services:
+  - type: static_site
+    name: vue-plos-api
+    buildCommand: npm install && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_API_BASE
+        value: https://vue-plos-api-backend.onrender.com
+  - type: web
+    name: vue-plos-api-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://macordero:espe2025@cluster0.fwu2dep.mongodb.net/
+    autoDeploy: true
