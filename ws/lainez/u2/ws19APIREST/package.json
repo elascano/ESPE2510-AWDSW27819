@@ -1,0 +1,16 @@
+{
+  "name": "ws19apirest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ricardo Lainez",
+  "license": "ISC",
+  "description": "Compute store",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.0.0"
+  }
+}
