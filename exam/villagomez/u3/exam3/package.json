@@ -1,0 +1,24 @@
+{
+  "name": "exam3awd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domenicole/exam3AWD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domenicole/exam3AWD/issues"
+  },
+  "homepage": "https://github.com/domenicole/exam3AWD#readme",
+  "dependencies": {
+    "mongodb": "^7.1.0",
+    "mongoose": "^9.1.6"
+  }
+}
