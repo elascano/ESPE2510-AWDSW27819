@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "name": "ExamU3-Backend",
+  "builds": [
+    {
+      "src": "src/app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/app.js"
+    }
+  ],
+  "alias": "ExamU3-Backend"
+}
