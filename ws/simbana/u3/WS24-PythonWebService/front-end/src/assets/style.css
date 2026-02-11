@@ -1,0 +1,20 @@
+
+.container {
+    width: 80%;
+    margin: auto;
+    font-family: Arial;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #621919;
+    padding: 8px;
+}
+
+th {
+    background: #6a0a0a;
+}
