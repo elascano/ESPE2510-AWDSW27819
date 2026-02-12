@@ -1,0 +1,12 @@
+{
+  "name": "exam-iva-frontend",
+  "version": "1.0.0",
+  "description": "IVA Calculator Frontend",
+  "scripts": {
+    "start": "python -m http.server 3001",
+    "dev": "python -m http.server 3001"
+  },
+  "keywords": ["iva", "calculator"],
+  "author": "",
+  "license": "MIT"
+}

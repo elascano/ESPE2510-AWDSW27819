@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVA Calculator - Search Product</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>IVA Calculator</h1>
+      <p>Search Product & Calculate IVA (15%)</p>
+    </header>
+
+    <main>
+      <section class="search-section">
+        <h2>Search Product</h2>
+        <div class="search-container">
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Enter product name (e.g., Milk, Coffee, Tea)"
+            autofocus
+          >
+          <button type="button" class="btn-search" onclick="searchProduct()">Search & Calculate IVA</button>
+        </div>
+        
+        <div id="productsList" style="display: none; margin-top: 20px;">
+          <h3>Available Products</h3>
+          <div id="productsContainer" class="products-list"></div>
+        </div>
+
+        <div id="errorMessage" style="display: none; color: #dc3545; margin-top: 15px; padding: 10px; background: #f8d7da; border-radius: 5px;"></div>
+      </section>
+
+      <section class="result-section" id="resultSection" style="display: none;">
+        <h2>IVA Calculation Result</h2>
+        <div class="result-card">
+          <div class="product-info">
+            <h3 id="productName">Product Name</h3>
+            <p id="productDescription">Details</p>
+          </div>
+          
+          <div class="result-item">
+            <label>Product Price:</label>
+            <span id="productPrice">$0.00</span>
+          </div>
+          
+          <div class="result-item highlight">
+            <label>IVA Amount (15%):</label>
+            <span id="ivaAmount">$0.00</span>
+          </div>
+          
+          <div class="result-item">
+            <label>Price with IVA:</label>
+            <span id="priceWithIVA">$0.00</span>
+          </div>
+        </div>
+        <button type="button" class="btn-reset" onclick="resetForm()">Search Another Product</button>
+      </section>
+
+      <section class="history-section" id="historySection" style="display: none;">
+        <h2>Search History</h2>
+        <div id="historyContainer"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 IVA Calculator - Exam Option 2</p>
+      <p id="backendStatus" style="font-size: 0.85rem; color: #999;"></p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
