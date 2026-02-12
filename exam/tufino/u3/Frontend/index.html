@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar IVA de Producto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🧾 Buscar IVA de Producto</h1>
+        
+        <div class="search-container">
+            <input type="text" id="productId" placeholder="Ingrese ID del producto">
+            <button onclick="buscarIVA()">Buscar</button>
+        </div>
+        
+        <p id="loading" class="loading" style="display: none;">Buscando...</p>
+        <p id="error" class="error" style="display: none;"></p>
+        
+        <div id="resultado" class="iva-result" style="display: none;">
+            <div class="iva-card">
+                <p id="productName" class="product-name"></p>
+                <h2>💰 IVA (16%)</h2>
+                <div id="ivaValue" class="iva-value-big"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

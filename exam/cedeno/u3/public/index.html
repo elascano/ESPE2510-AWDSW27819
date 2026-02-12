@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVA Calculator - Option 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>IVA Calculator</h1>
+      <p>Calculate IVA for 5 Products</p>
+    </header>
+
+    <main>
+      <section class="input-section">
+        <h2>Enter 5 Products</h2>
+        <form id="ivaForm">
+          <div class="products-container" id="productsContainer">
+            <!-- Products will be added here -->
+          </div>
+          <button type="submit" class="btn-submit">Calculate IVA</button>
+        </form>
+      </section>
+
+      <section class="result-section" id="resultSection" style="display: none;">
+        <h2>Calculation Results</h2>
+        <div class="result-card">
+          <div class="result-item">
+            <label>Total Price (without IVA):</label>
+            <span id="totalPrice">$0.00</span>
+          </div>
+          <div class="result-item highlight">
+            <label>IVA Amount (21%):</label>
+            <span id="ivaAmount">$0.00</span>
+          </div>
+          <div class="result-item">
+            <label>Final Price (with IVA):</label>
+            <span id="finalPrice">$0.00</span>
+          </div>
+        </div>
+        <button type="button" class="btn-reset" onclick="resetForm()">Calculate Again</button>
+      </section>
+
+      <section class="history-section" id="historySection" style="display: none;">
+        <h2>Calculation History</h2>
+        <div id="historyContainer"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 IVA Calculator - Exam Option 2</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

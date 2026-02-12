@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "titulo": "Introducción a Vue.js 3",
+    "autor": "María González",
+    "categoria": "Tecnología",
+    "fecha": "2024-01-15",
+    "descripcion": "Guía completa sobre los fundamentos de Vue.js 3 y la Composition API"
+  },
+  {
+    "id": 2,
+    "titulo": "Patrones de Diseño en JavaScript",
+    "autor": "Carlos Ramírez",
+    "categoria": "Programación",
+    "fecha": "2024-02-20",
+    "descripcion": "Exploración de los principales patrones de diseño aplicados a JavaScript moderno"
+  },
+  {
+    "id": 3,
+    "titulo": "Bases de Datos NoSQL",
+    "autor": "Ana Martínez",
+    "categoria": "Bases de Datos",
+    "fecha": "2024-03-10",
+    "descripcion": "Comparativa entre MongoDB, Cassandra y otras bases de datos NoSQL"
+  },
+  {
+    "id": 4,
+    "titulo": "Desarrollo Web Avanzado",
+    "autor": "Luis Fernández",
+    "categoria": "Tecnología",
+    "fecha": "2024-01-25",
+    "descripcion": "Técnicas avanzadas para el desarrollo de aplicaciones web modernas"
+  },
+  {
+    "id": 5,
+    "titulo": "Arquitectura de Microservicios",
+    "autor": "Patricia Silva",
+    "categoria": "Arquitectura",
+    "fecha": "2024-04-05",
+    "descripcion": "Diseño e implementación de sistemas basados en microservicios"
+  },
+  {
+    "id": 6,
+    "titulo": "TypeScript para Principiantes",
+    "autor": "Roberto Sánchez",
+    "categoria": "Programación",
+    "fecha": "2024-02-12",
+    "descripcion": "Introducción al tipado estático en JavaScript con TypeScript"
+  },
+  {
+    "id": 7,
+    "titulo": "Testing en Aplicaciones Vue",
+    "autor": "Laura Torres",
+    "categoria": "Testing",
+    "fecha": "2024-03-18",
+    "descripcion": "Estrategias de testing unitario e integración para aplicaciones Vue.js"
+  },
+  {
+    "id": 8,
+    "titulo": "API RESTful Best Practices",
+    "autor": "Diego López",
+    "categoria": "Backend",
+    "fecha": "2024-01-30",
+    "descripcion": "Mejores prácticas para el diseño de APIs RESTful escalables"
+  },
+  {
+    "id": 9,
+    "titulo": "Optimización de Rendimiento Web",
+    "autor": "Carmen Ruiz",
+    "categoria": "Performance",
+    "fecha": "2024-04-15",
+    "descripcion": "Técnicas para mejorar la velocidad y rendimiento de aplicaciones web"
+  },
+  {
+    "id": 10,
+    "titulo": "Seguridad en Aplicaciones SPA",
+    "autor": "Miguel Ángel Pérez",
+    "categoria": "Seguridad",
+    "fecha": "2024-02-28",
+    "descripcion": "Guía de seguridad para Single Page Applications"
+  },
+  {
+    "id": 11,
+    "titulo": "CSS Grid y Flexbox",
+    "autor": "Elena Jiménez",
+    "categoria": "Frontend",
+    "fecha": "2024-03-22",
+    "descripcion": "Dominando los sistemas de layout modernos en CSS"
+  },
+  {
+    "id": 12,
+    "titulo": "Node.js y Express",
+    "autor": "Fernando Castro",
+    "categoria": "Backend",
+    "fecha": "2024-01-18",
+    "descripcion": "Desarrollo de servidores web con Node.js y el framework Express"
+  }
+]
