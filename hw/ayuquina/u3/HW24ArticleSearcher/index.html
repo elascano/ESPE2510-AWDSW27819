@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLOS Papers Search</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>PLOS Papers Search</h1>
+            
+            <div class="search-section">
+                <input 
+                    v-model="searchQuery" 
+                    type="text" 
+                    placeholder="Ingrese término de búsqueda..."
+                    @keyup.enter="searchPapers"
+                >
+                <button @click="searchPapers" :disabled="loading">
+                    {{ loading ? 'Buscando...' : 'Buscar' }}
+                </button>
+            </div>
+
+            <div v-if="error" class="error">
+                {{ error }}
+            </div>
+
+            <div v-if="loading" class="loading">
+                Cargando papers...
+            </div>
+
+            <div v-if="papers.length > 0 && !loading" class="results">
+                <p>Resultados encontrados: {{ papers.length }} | Mostrando página {{ currentPage }} de {{ totalPages }}</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Título</th>
+                            <th>Journal</th>
+                            <th>EISSN</th>
+                            <th>Fecha de Publicación</th>
+                            <th>Tipo de Artículo</th>
+                            <th>Autores</th>
+                            <th>Abstract</th>
+                            <th>Score</th>
+                            <th>DOI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(paper, index) in paginatedPapers" :key="paper.id">
+                            <td class="number">{{ (currentPage - 1) * itemsPerPage + index + 1 }}</td>
+                            <td class="title">{{ paper.title_display }}</td>
+                            <td>{{ paper.journal }}</td>
+                            <td>{{ paper.eissn }}</td>
+                            <td>{{ formatDate(paper.publication_date) }}</td>
+                            <td>{{ paper.article_type }}</td>
+                            <td class="authors">
+                                <ul>
+                                    <li v-for="(author, index) in paper.author_display" :key="index">
+                                        {{ author }}
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="abstract">{{ getAbstract(paper.abstract) }}</td>
+                            <td>{{ paper.score ? paper.score.toFixed(2) : 'N/A' }}</td>
+                            <td class="doi">
+                                <a :href="'https://doi.org/' + paper.id" target="_blank" rel="noopener noreferrer">
+                                    {{ paper.id }}
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination" v-if="totalPages > 1">
+                    <button @click="previousPage" :disabled="currentPage === 1">Anterior</button>
+                    <span class="page-info">Página {{ currentPage }} de {{ totalPages }}</span>
+                    <button @click="nextPage" :disabled="currentPage === totalPages">Siguiente</button>
+                </div>
+            </div>
+
+            <div v-if="papers.length === 0 && !loading && searched" class="no-results">
+                No se encontraron resultados
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+### Health Check
+GET http://localhost:3001/health
+
+### API Info
+GET http://localhost:3001/api
+
+### ===== STUDENTS - CALCULATIONS =====
+
+### Get Student Study Time
+GET http://localhost:3001/api/students/1/study-time
+
+### Get Student Age
+GET http://localhost:3001/api/students/1/age
+
+### Get Birthday Countdown
+GET http://localhost:3001/api/students/1/birthday-countdown
+
+### ===== RELATIONSHIPS =====
+
+### Get Student Guardians
+GET http://localhost:3001/api/students/1/guardians
+
+### Get Guardian Students
+GET http://localhost:3001/api/guardians/1/students
+
+### ===== TEST WITH DIFFERENT IDS =====
+
+### Student 2 - Study Time
+GET http://localhost:3001/api/students/2/study-time
+
+### Student 2 - Age
+GET http://localhost:3001/api/students/2/age
+
+### Guardian 2 - Students
+GET http://localhost:3001/api/guardians/2/students
+
+### ===== ERROR CASES =====
+
+### Invalid Student ID
+GET http://localhost:3001/api/students/999999/age
+
+### Invalid Guardian ID
+GET http://localhost:3001/api/guardians/999999/students
+
+### Non-numeric ID
+GET http://localhost:3001/api/students/abc/age

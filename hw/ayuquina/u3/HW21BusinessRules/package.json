@@ -1,0 +1,21 @@
+{
+  "name": "hw-business-rules-api",
+  "version": "1.0.0",
+  "description": "Backend API for Nice Kids Center Business Rules",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/scripts/seedDatabase.js"
+  },
+  "keywords": ["api", "express", "mongodb", "education"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "mongoose": "^8.0.3"
+  }
+}
