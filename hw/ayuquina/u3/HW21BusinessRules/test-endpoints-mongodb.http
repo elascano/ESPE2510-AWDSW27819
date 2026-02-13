@@ -1,0 +1,44 @@
+### Health Check
+GET http://localhost:3001/health
+
+### API Info
+GET http://localhost:3001/api
+
+### ===== STUDENTS - CALCULATIONS (Jorge Lascano - ID: 1) =====
+
+### Get Student Study Time - Jorge
+GET http://localhost:3001/api/students/1/study-time
+
+### Get Student Age - Jorge
+GET http://localhost:3001/api/students/1/age
+
+### Get Birthday Countdown - Jorge
+GET http://localhost:3001/api/students/1/birthday-countdown
+
+### Get Student Guardians - Jorge
+GET http://localhost:3001/api/students/1/guardians
+
+### ===== USANDO OTROS IDs DE TU BASE DE DATOS =====
+
+### Get Student Study Time - ID 2
+GET http://localhost:3001/api/students/2/study-time
+
+### Get Student Age - ID 2
+GET http://localhost:3001/api/students/2/age
+
+### Get Guardian Students - ID 1
+GET http://localhost:3001/api/guardians/1/students
+
+### Get Guardian Students - ID 2
+GET http://localhost:3001/api/guardians/2/students
+
+### ===== ERROR CASES =====
+
+### Invalid Student ID (non-numeric)
+GET http://localhost:3001/api/students/abc/age
+
+### Student Not Found
+GET http://localhost:3001/api/students/99999/age
+
+### Guardian Not Found
+GET http://localhost:3001/api/guardians/99999/students
